@@ -46,6 +46,12 @@ macro_rules! cast {
     };
 }
 
+macro_rules! does {
+    ($expr1:tt is $expr2:expr) => { $expr1 == $expr2 };
+}
+
+
+
 fn main() {
     let v = m_vec!("hello", "world");
     println!("{:?}", v);
@@ -54,4 +60,5 @@ fn main() {
     m_math!(1 * 2);
     avg!(14, 45, 65, 32, 45);
     println!("{}", cast!( (u32) 32.2));
+    println!("{}", does!(14 is 13 + 1));
 }
