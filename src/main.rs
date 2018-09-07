@@ -58,6 +58,19 @@ macro_rules! do_that {
     }
 }
 
+macro_rules! build_fn {
+    (name $name:ident body $body:expr) => {
+        fn $name() {
+            $body
+        }
+    };
+    (name $name:ident ($rty:ty) body $body:expr) => {
+        fn $name() -> $rty {
+            $body
+        }
+    };
+}
+
 fn main() {
     let v = m_vec!("hello", "world");
     println!("{:?}", v);
@@ -68,4 +81,8 @@ fn main() {
     println!("{}", cast!( (u32) 32.2));
     println!("{}", does!(14 is 13 + 1));
     do_that!([1 + 1] <- 5);
+    build_fn!(name hello_world body println!("hey"));
+    hello_world();
+    build_fn!(name foo (i32) body 1 + 3);
+    println!("{}", foo());
 }
