@@ -1,0 +1,6 @@
+[package]
+name = "macros"
+version = "0.1.0"
+authors = ["WebD <eliangu3600103@gmail.com>"]
+
+[dependencies]
