@@ -50,7 +50,13 @@ macro_rules! does {
     ($expr1:tt is $expr2:expr) => { $expr1 == $expr2 };
 }
 
-
+macro_rules! do_that {
+    ([$job:expr] <- $times:tt) => {
+        for _ in 1..$times {
+            println!("{}", $job);
+        }
+    }
+}
 
 fn main() {
     let v = m_vec!("hello", "world");
@@ -61,4 +67,5 @@ fn main() {
     avg!(14, 45, 65, 32, 45);
     println!("{}", cast!( (u32) 32.2));
     println!("{}", does!(14 is 13 + 1));
+    do_that!([1 + 1] <- 5);
 }
